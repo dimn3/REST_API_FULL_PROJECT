@@ -17,31 +17,31 @@ MODEL_FILE = {
 
 
 class Command(BaseCommand):
-    def import_data(self, Model, fileName: str):
-        print(f"Import model {Model.__name__}")
-        if Model.objects.exists():
-            Model.objects.all().delete()
+    def import_data(self, model, fileName: str):
+        print(f"Import model {model.__name__}")
+        if model.objects.exists():
+            model.objects.all().delete()
 
         path = os.path.join(BASE_DIR, "static/data", fileName)
         reader = list(DictReader(open(path, encoding="utf8")))
 
         for dct in map(dict, reader):
-            if Model.__name__ == "Title":
+            if model.__name__ == "Title":
                 category = Category.objects.get(id=dct.pop("category"))
-                Model.objects.create(**dct, category=category)
+                model.objects.create(**dct, category=category)
 
-            elif Model.__name__ == "Review":
+            elif model.__name__ == "Review":
                 title = Title.objects.get(id=dct.pop("title_id"))
                 author = User.objects.get(id=dct.pop("author"))
-                Model.objects.create(**dct, title=title, author=author)
+                model.objects.create(**dct, title=title, author=author)
 
-            elif Model.__name__ == "Comment":
+            elif model.__name__ == "Comment":
                 review = Review.objects.get(id=dct.pop("review_id"))
                 author = User.objects.get(id=dct.pop("author"))
-                Model.objects.create(**dct, review=review, author=author)
+                model.objects.create(**dct, review=review, author=author)
             else:
-                Model.objects.create(**dct)
-        print(f"Import model {Model.__name__} done")
+                model.objects.create(**dct)
+        print(f"Import model {model.__name__} done")
 
     def handle(self, *args, **options):
         for model, filename in MODEL_FILE.items():
