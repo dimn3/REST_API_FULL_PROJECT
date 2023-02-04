@@ -17,12 +17,12 @@ MODEL_FILE = {
 
 
 class Command(BaseCommand):
-    def import_data(self, model, fileName: str):
+    def import_data(self, model, filename: str):
         print(f"Import model {model.__name__}")
         if model.objects.exists():
             model.objects.all().delete()
 
-        path = os.path.join(BASE_DIR, "static/data", fileName)
+        path = os.path.join(BASE_DIR, "static/data", filename)
         reader = list(DictReader(open(path, encoding="utf8")))
 
         for dct in map(dict, reader):
