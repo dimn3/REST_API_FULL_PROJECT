@@ -79,8 +79,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        """
+        django.contrib.auth.password_validation
+        .UserAttributeSimilarityValidator""",
     },
     {
         'NAME':
@@ -99,7 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_PAGINATION_CLASS':
+    'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
