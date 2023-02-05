@@ -1,6 +1,6 @@
 
 # версия docker-compose
-version: '3.3'
+version: '3.8'
 
 # имена и описания контейнеров, которые должны быть развёрнуты
 services:
@@ -9,9 +9,9 @@ services:
     volumes:
       - /var/lib/postgresql/data/
     env_file:
-      - ./.env
+      - .env
   web:
-    image: parfecto/2ac2aef8edfc:latest
+    image: parfecto/2ac2aef8edfc
     restart: always
     volumes:
       - static_value:/app/static/
@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env
+      - .env
 
   nginx:
     image: nginx:1.21.3-alpine
@@ -29,9 +29,8 @@ services:
 
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-
+      - ../api_yamdb/static/redoc.html:/usr/share/nginx/html/api/docs/redoc.html
       - static_value:/var/html/static/
-      
       - media_value:/var/html/media/
 
     depends_on:
