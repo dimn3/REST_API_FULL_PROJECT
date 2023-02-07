@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
   web:
-    image: parfecto/2ac2aef8edfc
+    image: parfecto/yamdb_final
     restart: always
     volumes:
       - static_value:/app/static/
