@@ -127,18 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 # .idea
 .idea
-=======
-# Папки, создаваемые средой разработки
-.idea
-=======
-# Папки, создаваемые средой разработки
-.idea
->>>>>>> 0cdbb0d8b026deeb22f69151ff4d47b89b10032a
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -158,8 +148,3 @@ dmypy.json
 static/
 posts/static/
 media/
-<<<<<<< HEAD
-
->>>>>>> master
-=======
->>>>>>> 0cdbb0d8b026deeb22f69151ff4d47b89b10032a
